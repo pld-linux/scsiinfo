@@ -13,6 +13,7 @@ Patch1:		%{name}-makefile.patch
 Patch2:		%{name}-misc.patch
 Patch3:		%{name}-tmpdir.patch
 Patch4:		%{name}-llh.patch
+Obsoletes:	scsiutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_ulibdir	%{_prefix}/lib
