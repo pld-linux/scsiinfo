@@ -1,0 +1,24 @@
+--- scsiinfo-1.7/scsiformat.c.orig	2008-07-10 20:08:49.643026000 +0200
++++ scsiinfo-1.7/scsiformat.c	2008-07-10 20:12:35.575026252 +0200
+@@ -54,7 +54,20 @@
+ #include <linux/fs.h>
+ #endif
+ #include <linux/hdreg.h>
+-#include <linux/genhd.h>
++
++/* from <linux/genhd.h> */
++struct partition {
++	unsigned char boot_ind;		/* 0x80 - active */
++	unsigned char head;		/* starting head */
++	unsigned char sector;		/* starting sector */
++	unsigned char cyl;		/* starting cylinder */
++	unsigned char sys_ind;		/* What partition type */
++	unsigned char end_head;		/* end head */
++	unsigned char end_sector;	/* end sector */
++	unsigned char end_cyl;		/* end cylinder */
++	__le32 start_sect;		/* starting sector counting from 0 */
++	__le32 nr_sects;		/* nr of sectors in partition */
++} __attribute__((packed));
+ 
+ #define TEST_UNIT_READY	(0x00)
+ #define FORMAT_UNIT	(0x04)
